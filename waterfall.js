@@ -10,7 +10,7 @@ var params,
     itemsOptions,
     onItemClick,
     currentCol,
-    delayTime;
+    delayTime; 
 
 var tdgMain = Titanium.UI.createView({
 	backgroundColor : '#fff',
