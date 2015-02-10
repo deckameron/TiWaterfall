@@ -185,7 +185,10 @@ var addGridItem = function(item) {
 
 var clearGrid = function() {
 	Ti.API.info('TiDynamicGrid -> clearGrid ran.');
-	tdgScrollView.removeAllChildren();
+	//tdgScrollView.removeAllChildren();
+	for(child in tdgScrollView.getChildren()){
+		tdgScrollView.children[child].removeAllChildren();
+	}
 };
 
 var setOnItemClick = function(fnt) {
