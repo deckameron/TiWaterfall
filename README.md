@@ -1,9 +1,12 @@
 ![logo](http://www.lineartpr.com/img/github/tdg_logo.png)
 ================================
 
-An Alloy Widget for creating a dynamic grid layout (like Pinterest) in iOS and Android. It works on phones and tablets in any orientation. Create your own grid layout item and assign it to TiDynamicGrid. You can set different parameters depending the orientations, each item could have it's own layout, add a custom function when an item is clicked, add a single item or group of items, clear the grid, etc. Please refer to the sample project to see it in action.
+A Titanium Mobile lib for creating a dynamic grid layout (like Pinterest) in iOS and Android. It works on phones and tablets in any orientation. Create your own grid layout item and assign it to TiDynamicGrid. You can set different parameters depending the orientations, each item could have it's own layout, add a custom function when an item is clicked, add a single item or group of items, clear the grid, etc. Please refer to the sample project to see it in action.
 
-This widget is based on [TiFlexiGrid](http://www.github.com/pablorr18/TiFlexiGrid), but with some changes. If you want a more standard grid layout, check out [TiFlexiGrid](http://www.github.com/pablorr18/TiFlexiGrid).
+The credits for these code goes entirely to @[pablorr18](https://github.com/pablorr18)
+
+This lib is a conversion of [TiFlexiGrid](http://www.github.com/pablorr18/TiDynamicGrid) into a non-Alloy javascript. I converted this code in order to help the developers who are not so familiarized with Titanium Alloy development. 
+If you want a more standard grid layout, check out [TiFlexiGrid](http://www.github.com/pablorr18/TiFlexiGrid).
 
 If anyone have some ideas, requests, contributions or want to show how you are using the widget , contact me at [@pablorr18](http://twitter.com/pablorr18).
 
@@ -28,35 +31,24 @@ If anyone have some ideas, requests, contributions or want to show how you are u
 First, add the widget to the dependencies list in your Alloy Project (config.json):
 
 ```javascript
-"dependencies": {
-	"com.prodz.tidynamicgrid":"1.0"
-}
+var Waterfall = require('/ui/common/Waterfall');
 ```
 
-Add the widget to a window or view:
-
-```xml
-<Alloy>
-	<Window id="win">
-		<Require type="widget" src="com.prodz.tidynamicgrid" id="tdg"/>
-	</Window>		
-</Alloy>
-```
-
-Now, initialize the widget:
+Now, initialize the Waterfall and add it to a window or view:
 
 ```javascript
-$.tdg.init({
-	columns:3,
-	space:5,
-	delayTime:1000,
-	gridBackgroundColor:'#e1e1e1',
-	itemBackgroundColor:'#fff',
-	itemBorderColor:'transparent',
-	itemBorderWidth:0,
-	itemBorderRadius:5
+var waterfall = Waterfall.init({
+	columns : 3,
+	space : 5,
+	delayTime : delay,
+	gridBackgroundColor : '#E1E1E1',
+	itemBackgroundColor : '#FFF',
+	itemBorderColor : 'transparent',
+	itemBorderWidth : 0,
+	itemBorderRadius : 5,
+	onItemClick : showGridItemInfo
 });
-
+self.add(waterfall); 
 ```
 
 Now, this is the important part. Create an empty array. In this array, each object should contain the following properties: "view" and "data". The "view" is our custom grid item (it should be a view containing all the elements or layout that you want). The "data" is the information that we want to be available once we click the item. Once we have all our items ready in the array, add it to the grid. For example:
@@ -82,34 +74,38 @@ var items = [];
 		{title:'Sample 14', image:'http://www.lorempixel.com/710/410/', subtitle:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'}
 	];
 
-for (var x=0; x < sample_data.length; x++){
-	
-	//CREATES A VIEW WITH OUR CUSTOM LAYOUT
-	var view = Alloy.createController('YOUR_CUSTOM_LAYOUT_CONTROLLER').getView();
-		
-	//THIS IS THE DATA THAT WE WANT AVAILABLE FOR THIS ITEM WHEN onItemClick OCCURS
-	var values = {
-		title: sample_data[x].title,
-		image: sample_data[x].image,
-		subtitle:sample_data[x].subtitle
-	};
-		
-	//NOW WE PUSH TO THE ARRAY THE VIEW AND THE DATA
-	items.push({
-		view: view,
-		data: values
-	});
-};
-	
-//ADD ALL THE ITEMS TO THE GRID
-$.tdg.addGridItems(items);
+
+	for (var x = 0; x < sample_data.length; x++) {
+		//CREATES A VIEW WITH OUR CUSTOM LAYOUT
+		var view = Titanium.UI.createImageView({
+			image : sample_data[x].image,
+			title : sample_data[x].title,
+			subtitle : sample_data[x].subtitle
+		});
+
+		//THIS IS THE DATA THAT WE WANT AVAILABLE FOR THIS ITEM WHEN onItemClick OCCURS
+		var values = {
+			title : sample_data[x].title,
+			image : sample_data[x].image
+		};
+
+		//NOW WE PUSH TO THE ARRAY THE VIEW AND THE DATA
+		items.push({
+			view : view,
+			data : values
+		});
+	}
+
+	//ADD ALL THE ITEMS TO THE GRID
+	Waterfall.addGridItems(items); 
+
 
 ```
 
 Notice that in the "**data**" property of the items we added the variable "**values**", which contains "**title**", "**image**" and  "**subtitle**". Now, we can get this data on  "**onItemClick**" by doing this:
 
 ```javascript
-$.tdg.setOnItemClick(function(e){
+var showGridItemInfo = function(e){
 	alert('Title is: ' + e.source.data.title + '. Image is: ' + e.source.data.image);
 });
 ```
@@ -151,7 +147,7 @@ Please refer to the Sample included in the project to see it in action.
 
 ### Note for Android
 
-The widget uses anydensity = true and system units as dp (now default in the latest Titanium SDK) in the tiapp.xml. 
+The lib uses anydensity = true and system units as dp (now default in the latest Titanium SDK) in the tiapp.xml. 
  
  You can use something like this in your tiapp.xml:
 ```xml
