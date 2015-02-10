@@ -31,7 +31,7 @@ If anyone have some ideas, requests, contributions or want to show how you are u
 First, add the widget to the dependencies list in your Alloy Project (config.json):
 
 ```javascript
-var Waterfall = require('/ui/common/Waterfall');
+var Waterfall = require('/ui/Waterfall');
 ```
 
 Now, initialize the Waterfall and add it to a window or view:
