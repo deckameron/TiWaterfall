@@ -5,7 +5,7 @@ A Titanium Mobile lib for creating a dynamic grid layout (like Pinterest) in iOS
 
 ### The credits for these code goes entirely to [pablorr18](https://github.com/pablorr18)
 
-This lib is a conversion of [TiFlexiGrid](http://www.github.com/pablorr18/TiDynamicGrid) into a non-Alloy javascript. I converted this code in order to help the developers who are not so familiarized with Titanium Alloy development. 
+This lib is a conversion of [TiDynamicGrid](http://www.github.com/pablorr18/TiDynamicGrid) into a non-Alloy javascript. I converted this code in order to help the developers who are not so familiarized with Titanium Alloy development. 
 If you want a more standard grid layout, check out [TiFlexiGrid](http://www.github.com/pablorr18/TiFlexiGrid).
 
 If anyone have some ideas, requests, contributions or want to show how you are using the widget , contact me at [@pablorr18](http://twitter.com/pablorr18).
