@@ -132,7 +132,8 @@ var addGridItem = function(item) {
 			bottom : space,
 			borderColor : itemsOptions.borderColor,
 			borderRadius : itemsOptions.borderRadius,
-			borderWidth : itemsOptions.borderWidth
+			borderWidth : itemsOptions.borderWidth,
+			data: item.data
 		});
 
 		var lbTitle = Ti.UI.createLabel({
