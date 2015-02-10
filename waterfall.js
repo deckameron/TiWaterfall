@@ -52,7 +52,7 @@ var init = function(opts) {
 
 	screenWidth = params.width || Ti.Platform.displayCaps.getPlatformWidth();
 	if (OS_ANDROID) {
-		screenWidth /= Ti.Platform.displayCaps.logicalDensityFactor;
+		screenWidth = params.width || Ti.Platform.displayCaps.platformWidth/(OS_ANDROID ? Ti.Platform.displayCaps.logicalDensityFactor:1);
 	}
 	newWidth = screenWidth - space;
 	columnWidth = (newWidth / columns) - space;
