@@ -54,52 +54,49 @@ self.add(waterfall);
 Now, this is the important part. Create an empty array. In this array, each object should contain the following properties: "view" and "data". The "view" is our custom grid item (it should be a view containing all the elements or layout that you want). The "data" is the information that we want to be available once we click the item. Once we have all our items ready in the array, add it to the grid. For example:
 
 ```javascript
+var items = [];
 
-	var items = [];
-	
-	var sample_data = [
-		{title:'Sample 1', image:'http://www.lorempixel.com/700/600/', subtitle:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
-		{title:'Sample 2', image:'http://www.lorempixel.com/900/1200/', subtitle:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
-		{title:'Sample 3', image:'http://www.lorempixel.com/400/300/', subtitle:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
-		{title:'Sample 4', image:'http://www.lorempixel.com/600/600/', subtitle:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
-		{title:'Sample 5', image:'http://www.lorempixel.com/400/310/', subtitle:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
-		{title:'Sample 6', image:'http://www.lorempixel.com/410/300/', subtitle:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
-		{title:'Sample 7', image:'http://www.lorempixel.com/500/300/', subtitle:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
-		{title:'Sample 8', image:'http://www.lorempixel.com/300/300/', subtitle:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
-		{title:'Sample 9', image:'http://www.lorempixel.com/450/320/', subtitle:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
-		{title:'Sample 10', image:'http://www.lorempixel.com/523/424/', subtitle:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
-		{title:'Sample 11', image:'http://www.lorempixel.com/610/320/', subtitle:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
-		{title:'Sample 12', image:'http://www.lorempixel.com/450/450/', subtitle:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
-		{title:'Sample 13', image:'http://www.lorempixel.com/620/420/', subtitle:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
-		{title:'Sample 14', image:'http://www.lorempixel.com/710/410/', subtitle:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'}
-	];
-
-
-	for (var x = 0; x < sample_data.length; x++) {
-		//CREATES A VIEW WITH OUR CUSTOM LAYOUT
-		var view = Titanium.UI.createImageView({
-			image : sample_data[x].image,
-			title : sample_data[x].title,
-			subtitle : sample_data[x].subtitle
-		});
-
-		//THIS IS THE DATA THAT WE WANT AVAILABLE FOR THIS ITEM WHEN onItemClick OCCURS
-		var values = {
-			title : sample_data[x].title,
-			image : sample_data[x].image
-		};
-
-		//NOW WE PUSH TO THE ARRAY THE VIEW AND THE DATA
-		items.push({
-			view : view,
-			data : values
-		});
-	}
-
-	//ADD ALL THE ITEMS TO THE GRID
-	Waterfall.addGridItems(items); 
+var sample_data = [
+	{title:'Sample 1', image:'http://www.lorempixel.com/700/600/', subtitle:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
+	{title:'Sample 2', image:'http://www.lorempixel.com/900/1200/', subtitle:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
+	{title:'Sample 3', image:'http://www.lorempixel.com/400/300/', subtitle:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
+	{title:'Sample 4', image:'http://www.lorempixel.com/600/600/', subtitle:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
+	{title:'Sample 5', image:'http://www.lorempixel.com/400/310/', subtitle:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
+	{title:'Sample 6', image:'http://www.lorempixel.com/410/300/', subtitle:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
+	{title:'Sample 7', image:'http://www.lorempixel.com/500/300/', subtitle:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
+	{title:'Sample 8', image:'http://www.lorempixel.com/300/300/', subtitle:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
+	{title:'Sample 9', image:'http://www.lorempixel.com/450/320/', subtitle:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
+	{title:'Sample 10', image:'http://www.lorempixel.com/523/424/', subtitle:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
+	{title:'Sample 11', image:'http://www.lorempixel.com/610/320/', subtitle:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
+	{title:'Sample 12', image:'http://www.lorempixel.com/450/450/', subtitle:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
+	{title:'Sample 13', image:'http://www.lorempixel.com/620/420/', subtitle:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
+	{title:'Sample 14', image:'http://www.lorempixel.com/710/410/', subtitle:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'}
+];
 
 
+for (var x = 0; x < sample_data.length; x++) {
+	//CREATES A VIEW WITH OUR CUSTOM LAYOUT
+	var view = Titanium.UI.createImageView({
+		image : sample_data[x].image,
+		title : sample_data[x].title,
+		subtitle : sample_data[x].subtitle
+	});
+
+	//THIS IS THE DATA THAT WE WANT AVAILABLE FOR THIS ITEM WHEN onItemClick OCCURS
+	var values = {
+		title : sample_data[x].title,
+		image : sample_data[x].image
+	};
+
+	//NOW WE PUSH TO THE ARRAY THE VIEW AND THE DATA
+	items.push({
+		view : view,
+		data : values
+	});
+}
+
+//ADD ALL THE ITEMS TO THE GRID
+Waterfall.addGridItems(items); 
 ```
 
 Notice that in the "**data**" property of the items we added the variable "**values**", which contains "**title**", "**image**" and  "**subtitle**". Now, we can get this data on  "**onItemClick**" by doing this:
