@@ -125,7 +125,9 @@ var addGridItem = function(item) {
 
 		var frame = Ti.UI.createView({
 			width : Ti.UI.FILL,
-			height : tmpView.size.height,
+			layout: 'vertical',
+			height: Ti.UI.SIZE,
+			//height : tmpView.size.height,
 			backgroundColor : itemsOptions.backgroundColor,
 			bottom : space,
 			borderColor : itemsOptions.borderColor,
@@ -133,23 +135,40 @@ var addGridItem = function(item) {
 			borderWidth : itemsOptions.borderWidth
 		});
 
-		var overlay = Ti.UI.createView({
-			width : Ti.UI.FILL,
-			height : Ti.UI.FILL,
+		var lbTitle = Ti.UI.createLabel({
+			width : '90%',
 			backgroundColor : 'transparent',
-			zIndex : 1,
-			data : item.data
+			zIndex : 2,
+			text : item.view.title,
+			textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+			color: '#2980b9',
+			font:{
+				fontSize: '13sp'
+			}
+		});
+		
+		var lbDescription = Ti.UI.createLabel({
+			width : '90%',
+			backgroundColor : 'transparent',
+			zIndex : 2,
+			text : item.view.subtitle,
+			textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+			color: '#575757',
+			font:{
+				fontSize: '11sp'
+			}
 		});
 
 		var gridElement = item.view;
 
 		//ADD CUSTOM FUNCTION ONCE AN ITEM IS CLICKED
-		overlay.addEventListener('click', function(e) {
+		frame.addEventListener('click', function(e) {
 			onItemClick(e);
 		});
 
 		frame.add(gridElement);
-		frame.add(overlay);
+		frame.add(lbTitle);
+		frame.add(lbDescription);
 
 		tdgMain.remove(tmpView);
 		tmpView = null;
