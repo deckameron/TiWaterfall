@@ -1,4 +1,4 @@
-  var Waterfall = require('/ui/common/Waterfall');
+  var Waterfall = require('/ui/Waterfall');
 	
 	var delay = 10;
 	
