@@ -55,7 +55,7 @@ Now, this is the important part. Create an empty array. In this array, each obje
 
 ```javascript
 
-var items = [];
+	var items = [];
 	
 	var sample_data = [
 		{title:'Sample 1', image:'http://www.lorempixel.com/700/600/', subtitle:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
