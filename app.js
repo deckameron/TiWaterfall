@@ -1,3 +1,5 @@
+var OS_ANDROID = Titanium.Platform.osname == 'android';
+
 var Waterfall = require('/ui/Waterfall');
 	
 var delay = 10;
