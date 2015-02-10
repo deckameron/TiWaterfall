@@ -3,7 +3,7 @@
 
 A Titanium Mobile lib for creating a dynamic grid layout (like Pinterest) in iOS and Android. It works on phones and tablets in any orientation. Create your own grid layout item and assign it to TiDynamicGrid. You can set different parameters depending the orientations, each item could have it's own layout, add a custom function when an item is clicked, add a single item or group of items, clear the grid, etc. Please refer to the sample project to see it in action.
 
-The credits for these code goes entirely to @[pablorr18](https://github.com/pablorr18)
+The credits for these code goes entirely to [pablorr18](https://github.com/pablorr18)
 
 This lib is a conversion of [TiFlexiGrid](http://www.github.com/pablorr18/TiDynamicGrid) into a non-Alloy javascript. I converted this code in order to help the developers who are not so familiarized with Titanium Alloy development. 
 If you want a more standard grid layout, check out [TiFlexiGrid](http://www.github.com/pablorr18/TiFlexiGrid).
