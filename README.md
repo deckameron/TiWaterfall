@@ -79,7 +79,8 @@ for (var x = 0; x < sample_data.length; x++) {
 	var view = Titanium.UI.createImageView({
 		image : sample_data[x].image,
 		title : sample_data[x].title,
-		subtitle : sample_data[x].subtitle
+		subtitle : sample_data[x].subtitle,
+		zIndex: 1
 	});
 
 	//THIS IS THE DATA THAT WE WANT AVAILABLE FOR THIS ITEM WHEN onItemClick OCCURS
